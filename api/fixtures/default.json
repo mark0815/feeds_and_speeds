@@ -1,0 +1,109 @@
+[
+    {
+        "model": "api.machine",
+        "pk": 1,
+        "fields": {
+            "name": "Default",
+            "spindle_net_power_kw": 2.0,
+            "max_rpm": 5500,
+            "max_vf": 6000.0
+        }
+    },
+    {
+        "model": "api.materialclass",
+        "pk": 1,
+        "fields": {
+            "name": "Aluminium"
+        }
+    },
+    {
+        "model": "api.materialclass",
+        "pk": 2,
+        "fields": {
+            "name": "Steel"
+        }
+    },
+    {
+        "model": "api.material",
+        "pk": 1,
+        "fields": {
+            "material_class": 1,
+            "name": "AlCuMg1",
+            "kc_1_1": 830.0,
+            "mc": 0.23
+        }
+    },
+    {
+        "model": "api.material",
+        "pk": 2,
+        "fields": {
+            "material_class": 2,
+            "name": "S235JR",
+            "kc_1_1": 1780.0,
+            "mc": 0.17
+        }
+    },
+    {
+        "model": "api.vendor",
+        "pk": 1,
+        "fields": {
+            "name": "Generic"
+        }
+    },
+    {
+        "model": "api.tool",
+        "pk": 1,
+        "fields": {
+            "vendor": 1,
+            "name": "8mm 3fl carbite",
+            "description": "",
+            "flute_count": 3,
+            "flute_length": 20.0,
+            "diameter": 8.0
+        }
+    },
+    {
+        "model": "api.cuttingdata",
+        "pk": 1,
+        "fields": {
+            "tool": 1,
+            "material": 1,
+            "fz": 0.055,
+            "vc": 800.0
+        }
+    },
+    {
+        "model": "api.cuttingdata",
+        "pk": 2,
+        "fields": {
+            "tool": 1,
+            "material": 1,
+            "fz": 0.05,
+            "vc": 350.0
+        }
+    },
+    {
+        "model": "api.cuttingrecipe",
+        "pk": 1,
+        "fields": {
+            "cutting_data": 1,
+            "machine": 1,
+            "machine_max_rpm_override": null,
+            "machine_max_vf_override": null,
+            "tool_fz_override": null,
+            "tool_vc_override": null
+        }
+    },
+    {
+        "model": "api.cuttingrecipe",
+        "pk": 3,
+        "fields": {
+            "cutting_data": 2,
+            "machine": 1,
+            "machine_max_rpm_override": null,
+            "machine_max_vf_override": null,
+            "tool_fz_override": null,
+            "tool_vc_override": null
+        }
+    }
+]

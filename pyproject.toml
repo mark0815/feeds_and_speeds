@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "feeds_and_speeds_backend"
+version = "0.1.0"
+description = ""
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.1.6"
+djangorestframework = "^3.12.2"
+Markdown = "^3.3.3"
+django-filter = "^2.4.0"
+djangorestframework-simplejwt = "^4.6.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
