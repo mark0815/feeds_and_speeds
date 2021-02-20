@@ -1,4 +1,4 @@
-from api.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
+from ..constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
 from django.db import models
 
 

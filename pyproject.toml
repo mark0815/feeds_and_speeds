@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "feeds_and_speeds_backend"
+name = "machinist_toolbox"
 version = "0.1.0"
 description = ""
 authors =[]

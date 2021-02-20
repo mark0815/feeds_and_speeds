@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CuttingData, Machine, MaterialClass, Material, Vendor, Tool
+from .models import CuttingData, Machine, Vendor, Tool
 
 
 class CuttingDataSerializer(serializers.HyperlinkedModelSerializer):
@@ -12,18 +12,6 @@ class MachineSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Machine
         fields = ["id", "name", "spindle_net_power_kw", "max_rpm", "max_cutting_speed"]
-
-
-class MaterialClassSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = MaterialClass
-        fields = ["id", "name"]
-
-
-class MaterialSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Material
-        fields = ["id", "material_class", "name", "kc_1_1", "mc"]
 
 
 class VendorSerializer(serializers.HyperlinkedModelSerializer):

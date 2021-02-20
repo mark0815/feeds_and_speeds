@@ -1,42 +1,17 @@
-from api.admin_helper import changelist_link
+from machinist_toolbox.admin_helper import changelist_link
 from django.contrib import admin
 from .models import (
     CuttingData,
     CuttingRecipe,
     Machine,
-    MaterialClass,
-    Material,
     Vendor,
     Tool,
 )
-from django.urls import reverse
-from django.utils.http import urlencode
-from django.utils.html import format_html
 
 
 @admin.register(Machine)
 class MachineAdmin(admin.ModelAdmin):
     list_display = ("name", "spindle_net_power_kw", "max_rpm", "max_vf")
-
-
-@admin.register(MaterialClass)
-class MaterialClassAdmin(admin.ModelAdmin):
-    list_display = ("name", "list_materials_count")
-
-    def list_materials_count(self, obj: MaterialClass) -> str:
-        return changelist_link(
-            Material,
-            f"{obj.materials.count()} Materials",
-            {"material_class__id__exact": f"{obj.id}"},
-        )
-
-    list_materials_count.short_description = "Materials"
-
-
-@admin.register(Material)
-class MaterialAdmin(admin.ModelAdmin):
-    list_display = ("material_class", "name", "kc_1_1", "mc")
-    list_filter = ["material_class"]
 
 
 @admin.register(Vendor)

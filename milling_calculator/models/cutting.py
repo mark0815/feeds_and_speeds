@@ -1,15 +1,14 @@
-from api.constants import PHI_SELECTION_CENTER, PHI_SELECTION_CHOICES
+from ..constants import PHI_SELECTION_CENTER, PHI_SELECTION_CHOICES
 from django.db import models
 import typing as t
 from .machine import Machine
 from .tool import Tool
-from .material import Material
-from api import calculator
+from .. import calculator
 
 
 class CuttingData(models.Model):
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
-    material = models.ForeignKey(Material, on_delete=models.CASCADE)
+    material = models.ForeignKey("materials.Material", on_delete=models.CASCADE)
     fz_base = models.FloatField(
         verbose_name="fz (base)", help_text="fz at ae=0.5d and ap=1d"
     )
