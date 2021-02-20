@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "materials",
     "milling_calculator",
+    "drilling",
 ]
 
 MIDDLEWARE = [

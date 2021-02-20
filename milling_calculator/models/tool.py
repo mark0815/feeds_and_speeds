@@ -1,4 +1,4 @@
-from ..constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
+from machinist_toolbox.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
 from django.db import models
 
 
@@ -34,4 +34,4 @@ class Tool(models.Model):
         return f"{self.diameter}mm {self.flute_count}fl {self.get_material_display()} ({self.vendor})"
 
     class Meta:
-        ordering = ("name",)
+        ordering = ("vendor", "diameter")
