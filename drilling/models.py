@@ -66,8 +66,8 @@ class DrillRecipe(models.Model):
 
     @property
     def cutting_params_rpm(self) -> float:
-        return self.cutting_params[0]
+        return round(self.cutting_params[0])
 
     @property
     def cutting_params_vf(self) -> float:
-        return self.cutting_params[1]
+        return round(self.cutting_params[1])
