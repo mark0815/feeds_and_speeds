@@ -5,7 +5,7 @@
 * Install Poetry packages in root python
 
     ```bash
-    poetry export -f requirements.txt --without-hashes | pip install -r /dev/stdin
+    poetry export --dev -f requirements.txt --without-hashes | pip install -r /dev/stdin
     ```
 
 * Dump / Load data
