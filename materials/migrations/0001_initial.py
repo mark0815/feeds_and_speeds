@@ -8,33 +8,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='MaterialClass',
+            name="MaterialClass",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
             options={
-                'verbose_name': 'Material Class',
-                'verbose_name_plural': 'Material Classes',
-                'ordering': ('name',),
+                "verbose_name": "Material Class",
+                "verbose_name_plural": "Material Classes",
+                "ordering": ("name",),
             },
         ),
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('kc_1_1', models.FloatField(verbose_name='kc 1.1 (N/mm^2)')),
-                ('mc', models.FloatField(verbose_name='Mc')),
-                ('material_class', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='materials', to='materials.materialclass')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("kc_1_1", models.FloatField(verbose_name="kc 1.1 (N/mm^2)")),
+                ("mc", models.FloatField(verbose_name="Mc")),
+                (
+                    "material_class",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="materials",
+                        to="materials.materialclass",
+                    ),
+                ),
             ],
             options={
-                'ordering': ('name',),
+                "ordering": ("name",),
             },
         ),
     ]

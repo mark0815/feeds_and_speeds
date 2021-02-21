@@ -1,0 +1,60 @@
+[
+    {
+        "model": "milling.machine",
+        "pk": 1,
+        "fields": {
+            "name": "Generic",
+            "spindle_net_power_kw": 2.0,
+            "max_rpm": 5000,
+            "max_vf": 6000.0
+        }
+    },
+    {
+        "model": "milling.vendor",
+        "pk": 1,
+        "fields": {
+            "name": "Generic"
+        }
+    },
+    {
+        "model": "milling.tool",
+        "pk": 1,
+        "fields": {
+            "vendor": 1,
+            "name": null,
+            "description": "",
+            "flute_count": 3,
+            "flute_length": 20.0,
+            "diameter": 8.0,
+            "cutting_edge_angle": 90.0,
+            "material": "CARBIDE"
+        }
+    },
+    {
+        "model": "milling.cuttingdata",
+        "pk": 1,
+        "fields": {
+            "tool": 1,
+            "material": 1,
+            "fz_base": 0.03,
+            "vc_base": 350.0,
+            "fz_factor_slotting": 0.8,
+            "vc_factor_slotting": 0.75
+        }
+    },
+    {
+        "model": "milling.cuttingrecipe",
+        "pk": 1,
+        "fields": {
+            "cutting_data": 1,
+            "machine": 1,
+            "machine_max_rpm_override": null,
+            "machine_max_vf_override": null,
+            "tool_fz_override": null,
+            "tool_vc_override": null,
+            "ae": 4.0,
+            "ap": 8.0,
+            "phi_selection": "OC"
+        }
+    }
+]

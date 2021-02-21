@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('milling_calculator', '0001_initial'),
+        ("milling", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='tool',
-            options={'ordering': ('vendor', 'diameter')},
+            name="tool",
+            options={"ordering": ("vendor", "diameter")},
         ),
     ]
