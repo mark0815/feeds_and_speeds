@@ -8,7 +8,7 @@ from .models import (
 
 @admin.register(Drill)
 class DrillAdmin(admin.ModelAdmin):
-    list_display = ("flute_count", "diameter", "material", "drill_type")
+    list_display = ("diameter", "material", "drill_type")
     list_filter = ("material", "drill_type")
 
 

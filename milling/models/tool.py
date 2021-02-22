@@ -18,7 +18,6 @@ class Tool(models.Model):
     vendor = models.ForeignKey(
         Vendor, on_delete=models.CASCADE, related_name="tools", null=True
     )
-    name = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     flute_count = models.PositiveIntegerField()
     flute_length = models.FloatField(verbose_name="Flute length (mm)")

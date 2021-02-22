@@ -6,12 +6,9 @@ import typing as t
 
 
 class Drill(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    flute_count = models.PositiveIntegerField(default=2)
     flute_length = models.FloatField(verbose_name="Flute length (mm)")
     diameter = models.FloatField(verbose_name="Diameter (mm)")
-    tip_angle = models.FloatField(verbose_name="Tip angle")
     material = models.CharField(
         max_length=10, choices=TOOL_MATERIAL_CHOICES, default=TOOL_MATERIAL_CARBIDE
     )
@@ -20,10 +17,10 @@ class Drill(models.Model):
     )
 
     def __str__(self):
-        return f"{self.diameter}mm {self.flute_count}fl {self.get_material_display()} ({self.get_drill_type_display()})"
+        return f"{self.diameter}mm {self.get_material_display()} ({self.get_drill_type_display()})"
 
     class Meta:
-        ordering = ("name",)
+        ordering = ("diameter",)
 
 
 class DrillData(models.Model):

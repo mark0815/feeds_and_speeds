@@ -13,8 +13,10 @@
     ```bash
     ./manage.py dumpdata --format json materials > materials/fixtures/default.json
     ./manage.py dumpdata --format json milling > milling/fixtures/default.json
+    ./manage.py dumpdata --format json drilling > drilling/fixtures/default.json
     ./manage.py loaddata --app materials --format json default.json
     ./manage.py loaddata --app milling --format json default.json
+    ./manage.py loaddata --app drilling --format json default.json
     ```
 
 ## Links

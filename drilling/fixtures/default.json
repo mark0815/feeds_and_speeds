@@ -1,0 +1,92 @@
+[
+    {
+        "model": "drilling.drill",
+        "pk": 1,
+        "fields": {
+            "description": "",
+            "flute_length": 10.0,
+            "diameter": 6.0,
+            "material": "CARBIDE",
+            "drill_type": "SPOT_DRILL"
+        }
+    },
+    {
+        "model": "drilling.drill",
+        "pk": 2,
+        "fields": {
+            "description": "",
+            "flute_length": 60.0,
+            "diameter": 3.0,
+            "material": "HSS",
+            "drill_type": "SPIRAL_DRILL"
+        }
+    },
+    {
+        "model": "drilling.drill",
+        "pk": 3,
+        "fields": {
+            "description": "",
+            "flute_length": 60.0,
+            "diameter": 8.0,
+            "material": "HSS",
+            "drill_type": "SPIRAL_DRILL"
+        }
+    },
+    {
+        "model": "drilling.drilldata",
+        "pk": 1,
+        "fields": {
+            "drill": 1,
+            "material": 1,
+            "f": 0.04,
+            "vc": 260.0
+        }
+    },
+    {
+        "model": "drilling.drilldata",
+        "pk": 2,
+        "fields": {
+            "drill": 2,
+            "material": 1,
+            "f": 0.07,
+            "vc": 50.0
+        }
+    },
+    {
+        "model": "drilling.drilldata",
+        "pk": 3,
+        "fields": {
+            "drill": 3,
+            "material": 1,
+            "f": 0.19,
+            "vc": 50.0
+        }
+    },
+    {
+        "model": "drilling.drillrecipe",
+        "pk": 1,
+        "fields": {
+            "drill_data": 1,
+            "rpm_override": 4500,
+            "vf_override": null
+        }
+    },
+    {
+        "model": "drilling.drillrecipe",
+        "pk": 2,
+        "fields": {
+            "drill_data": 2,
+            "rpm_override": 4500,
+            "vf_override": null
+        }
+    },
+    {
+        "model": "drilling.drillrecipe",
+        "pk": 3,
+        "fields": {
+            "drill_data": 3,
+            "rpm_override": 4500,
+            "vf_override": null
+        }
+    }
+]
