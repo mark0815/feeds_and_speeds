@@ -6,16 +6,17 @@ authors =[]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^3.1.6"
-djangorestframework = "^3.12.2"
-Markdown = "^3.3.3"
-django-filter = "^2.4.0"
-djangorestframework-simplejwt = "^4.6.0"
+Django = "^3.1"
+djangorestframework = "^3.0"
+Markdown = "^3.0"
+django-filter = "^2.0"
+djangorestframework-simplejwt = "^4.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.0"
 django-stubs = "^1.7.0"
 djangorestframework-stubs = "^1.4.0"
+pytest-django = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

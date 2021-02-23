@@ -22,4 +22,4 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
 RUN pip install --upgrade pip \
-    && pip install pre-commit poetry
+    && pip install pre-commit poetry pytest
