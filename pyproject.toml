@@ -21,3 +21,6 @@ pytest-django = "^4.1.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "machinist_toolbox.settings"
