@@ -129,3 +129,5 @@ STATIC_URL = "/static/"
 #        'rest_framework_simplejwt.authentication.JWTAuthentication',
 #    )
 # }
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
