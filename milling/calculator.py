@@ -57,9 +57,8 @@ def phi_by_selection(center_cut: bool, ae: float, tool_diameter: float) -> float
     """ Calculated phi by selection based on ae """
     if center_cut:
         return 2 * asin(ae / tool_diameter)
-    else:
-        cutter_radius = tool_diameter / 2
-        return 90 + asin((ae - cutter_radius) / cutter_radius)
+    cutter_radius = tool_diameter / 2
+    return 90 + asin((ae - cutter_radius) / cutter_radius)
 
 
 def flutes_engaged(tool_diameter: float, phi: float) -> float:
@@ -144,9 +143,8 @@ def calc_phi_s(mittig: bool, a_e: float, d_c: float) -> float:
     """ Eingriffswinkel in Grad (mittig/ausser-mittig) """
     if mittig:
         return 2 * asin(a_e / d_c)
-    else:
-        d_r = d_c / 2
-        return 90 + asin((a_e - d_r) / d_r)
+    d_r = d_c / 2
+    return 90 + asin((a_e - d_r) / d_r)
 
 
 def calc_y(a_e: float, d_c: float) -> float:
