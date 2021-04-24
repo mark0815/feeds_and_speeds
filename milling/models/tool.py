@@ -1,5 +1,7 @@
-from machinist_toolbox.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
+""" Tool module """
 from django.db import models
+
+from machinist_toolbox.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
 
 
 class Vendor(models.Model):

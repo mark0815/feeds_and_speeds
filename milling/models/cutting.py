@@ -1,9 +1,11 @@
-from ..constants import PHI_SELECTION_CENTER, PHI_SELECTION_CHOICES
-from django.db import models
 import typing as t
+
+from django.db import models
+
+from .. import calculator
+from ..constants import PHI_SELECTION_CENTER, PHI_SELECTION_CHOICES
 from .machine import Machine
 from .tool import Tool
-from .. import calculator
 
 
 class CuttingData(models.Model):
@@ -124,3 +126,4 @@ class CuttingRecipe(models.Model):
                 f_z=self.fz_effective,
             )
             return round(p, 4)
+        return None

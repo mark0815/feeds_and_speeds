@@ -1,7 +1,6 @@
 from django.contrib import admin
-from milling.models import (
-    Machine,
-)
+
+from milling.models import Machine
 
 
 @admin.register(Machine)

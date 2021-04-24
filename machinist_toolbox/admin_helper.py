@@ -1,8 +1,9 @@
+import typing as t
+
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
-from django.utils.http import urlencode
 from django.utils.html import format_html
-import typing as t
+from django.utils.http import urlencode
 
 
 def changelist_url(model_class):

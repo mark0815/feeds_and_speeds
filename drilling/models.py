@@ -1,8 +1,11 @@
-from django.db import models
-from machinist_toolbox.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
-from .constants import DRILL_TYPE_CHOICES, DRILL_TYPE_SPIRAL_DRILL
-from math import sin, asin, pi
 import typing as t
+from math import pi
+
+from django.db import models
+
+from machinist_toolbox.constants import TOOL_MATERIAL_CARBIDE, TOOL_MATERIAL_CHOICES
+
+from .constants import DRILL_TYPE_CHOICES, DRILL_TYPE_SPIRAL_DRILL
 
 
 class Drill(models.Model):

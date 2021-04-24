@@ -22,7 +22,7 @@ class Material(models.Model):
     mc = models.FloatField(verbose_name="Mc")
 
     def __str__(self):
-        return "%s (%s)" % (self.name, self.material_class)
+        return f"{self.name} ({self.material_class})"
 
     class Meta:
         ordering = ("name",)

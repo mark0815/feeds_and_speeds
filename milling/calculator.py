@@ -1,5 +1,6 @@
-from math import sin, asin, pi
+""" Calculator module """
 import typing as t
+from math import asin, pi, sin
 
 
 def calculate_rpm_vf(

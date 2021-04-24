@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import CuttingData, Machine, Vendor, Tool
+
+from .models import CuttingData, Machine, Tool, Vendor
 
 
 class CuttingDataSerializer(serializers.HyperlinkedModelSerializer):

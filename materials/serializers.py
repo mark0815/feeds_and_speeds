@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import MaterialClass, Material
+
+from .models import Material, MaterialClass
 
 
 class MaterialClassSerializer(serializers.HyperlinkedModelSerializer):

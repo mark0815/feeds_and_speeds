@@ -1,26 +1,81 @@
-[tool.poetry]
-name = "machinist_toolbox"
-version = "0.1.0"
-description = ""
-authors =[]
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
 
-[tool.poetry.dependencies]
-python = "^3.9"
-Django = "^3.1"
-djangorestframework = "^3.0"
-Markdown = "^3.0"
-django-filter = "^2.0"
-djangorestframework-simplejwt = "^4.0"
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_third_party = ["django", "rest_framework"]
+known_first_party = ["drilling", "materials", "milling", "machinist_toolbox"]
+default_section = "THIRDPARTY"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.0"
-django-stubs = "^1.7.0"
-djangorestframework-stubs = "^1.4.0"
-pytest-django = "^4.1.0"
+[tool.pylint.MESSAGE_CONTROL]
+disable = """
+    fixme,
+    line-too-long,
+    too-few-public-methods,
+    logging-fstring-interpolation,
+    import-outside-toplevel,
+    abstract-method,
+    duplicate-code,
+    no-member,
+    unsubscriptable-object,
+    cyclic-import,
+"""
+enable = "useless-suppression"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.pylint.REPORTS]
+msg-template = "{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}"
+reports = "no"
 
+[tool.pylint.FORMAT]
+max-line-length = "88"
+
+[tool.pylint.VARIABLES]
+ignored-argument-names = "args|kwargs|_|__"
+
+[tool.pylint.DESIGN]
+max-args = 6
+max-parents = 10
+max-attributes = 20
+max-locals = 20
+
+[tool.pylint.BASIC]
+good-names = "_,i,e,ev,p,hp,qp,mm,yy,to,setUp,tearDown, maxDiff"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    ".venv/*", # Excluded for Gitlab/CI
+    "manage.py",
+    "machinist_toolbox/*.py",
+    "*/migrations/*",
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/apps.py"
+]
+branch = false
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = ["raise NotImplementedError", "pragma: no cover"]
+
+# Keep for VSCode test discovery
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "machinist_toolbox.settings"
+
+[tool.poetry]
+name = "machinist_toolbox"
+version = "1.0.0"
+description = "Machinists Toolbox"
+authors = []
+
+[tool.poetry.dev-dependencies]
+pre-commit = "*"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0.0"
+django = "*"
+djangorestframework = "*"

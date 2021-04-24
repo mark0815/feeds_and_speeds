@@ -1,9 +1,9 @@
-from django.http.response import HttpResponse
-from machinist_toolbox.admin_helper import changelist_link, changelist_url
-from milling.models.tool_table import ToolTableEntry
 from django.contrib import admin
-from django.urls import path
+from django.http.response import HttpResponse
 from django.template import loader
+from django.urls import path
+
+from milling.models.tool_table import ToolTableEntry
 
 
 @admin.register(ToolTableEntry)

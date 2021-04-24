@@ -6,24 +6,24 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('drilling', '0004_auto_20210222_1724'),
+        ("drilling", "0004_auto_20210222_1724"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='drill',
-            options={'ordering': ('diameter',)},
+            name="drill",
+            options={"ordering": ("diameter",)},
         ),
         migrations.RemoveField(
-            model_name='drill',
-            name='flute_count',
+            model_name="drill",
+            name="flute_count",
         ),
         migrations.RemoveField(
-            model_name='drill',
-            name='name',
+            model_name="drill",
+            name="name",
         ),
         migrations.RemoveField(
-            model_name='drill',
-            name='tip_angle',
+            model_name="drill",
+            name="tip_angle",
         ),
     ]

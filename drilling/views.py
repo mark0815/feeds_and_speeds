@@ -1,8 +1,7 @@
-from .models import Drill
 from rest_framework import viewsets
-from .serializers import (
-    DrillSerializer,
-)
+
+from .models import Drill
+from .serializers import DrillSerializer
 
 
 class DrillViewSet(viewsets.ModelViewSet):

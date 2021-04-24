@@ -1,10 +1,11 @@
-from .models import CuttingData, Machine, Vendor, Tool
 from rest_framework import viewsets
+
+from .models import CuttingData, Machine, Tool, Vendor
 from .serializers import (
     CuttingDataSerializer,
     MachineSerializer,
-    VendorSerializer,
     ToolSerializer,
+    VendorSerializer,
 )
 
 

@@ -2,21 +2,12 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.158.0/containers/python-3
 {
 	"name": "Python 3",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			// Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
-			"VARIANT": "3",
-			// Options
-			"INSTALL_NODE": "true",
-			"NODE_VERSION": "lts/*"
-		}
-	},
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"editor.formatOnSave": true,
-		"python.formatting.provider": "black",
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"python.languageServer": "Pylance",
 		"python.pythonPath": "/usr/local/bin/python",
@@ -41,19 +32,25 @@
 		],
 		"python.testing.unittestEnabled": false,
 		"python.testing.nosetestsEnabled": false,
-		"python.testing.pytestEnabled": true
+		"python.testing.pytestEnabled": true,
+		"pythonTestExplorer.testFramework": "pytest",
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.vscode-pylance",
 		"mrorz.language-gettext",
 		"redhat.vscode-yaml",
-		"dotjoshjohnson.xml"
+		"dotjoshjohnson.xml",
+		"davidanson.vscode-markdownlint",
+		"bungcip.better-toml"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "poetry export --dev -f requirements.txt --without-hashes | pip install -r /dev/stdin",
+	//"postCreateCommand": "poetry config virtualenvs.create false && poetry install --no-root",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
+	}
 }

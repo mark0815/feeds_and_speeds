@@ -1,9 +1,7 @@
-from .models import Material, MaterialClass
 from rest_framework import viewsets
-from .serializers import (
-    MaterialClassSerializer,
-    MaterialSerializer,
-)
+
+from .models import Material, MaterialClass
+from .serializers import MaterialClassSerializer, MaterialSerializer
 
 
 class MaterialClassViewSet(viewsets.ModelViewSet):

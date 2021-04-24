@@ -1,8 +1,6 @@
 from django.contrib import admin
-from milling.models import (
-    CuttingData,
-    CuttingRecipe,
-)
+
+from milling.models import CuttingData, CuttingRecipe
 
 
 @admin.register(CuttingData)

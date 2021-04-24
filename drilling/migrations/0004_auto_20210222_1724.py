@@ -6,13 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('drilling', '0003_auto_20210221_2025'),
+        ("drilling", "0003_auto_20210221_2025"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='drill',
-            name='drill_type',
-            field=models.CharField(choices=[('SPIRAL_DRILL', 'Spiral Drill'), ('SPOT_DRILL', 'Spot Drill')], default='SPIRAL_DRILL', max_length=20),
+            model_name="drill",
+            name="drill_type",
+            field=models.CharField(
+                choices=[
+                    ("SPIRAL_DRILL", "Spiral Drill"),
+                    ("SPOT_DRILL", "Spot Drill"),
+                ],
+                default="SPIRAL_DRILL",
+                max_length=20,
+            ),
         ),
     ]

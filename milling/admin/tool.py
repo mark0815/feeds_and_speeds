@@ -1,9 +1,8 @@
-from machinist_toolbox.admin_helper import changelist_link
 from django.contrib import admin
-from milling.models import (
-    Vendor,
-    Tool,
-)
+from django.utils.translation import gettext_lazy as _
+
+from machinist_toolbox.admin_helper import changelist_link
+from milling.models import Tool, Vendor
 
 
 @admin.register(Vendor)
@@ -12,10 +11,12 @@ class ToolVendorAdmin(admin.ModelAdmin):
 
     def list_tool_count(self, obj: Vendor):
         return changelist_link(
-            Tool, f"{obj.tools.count()} Tools", {"vendor__id__exact": f"{obj.id}"}
+            Tool,
+            _("%(count)s Tools") % {"count": obj.tools.count()},
+            {"vendor__id__exact": f"{obj.id}"},
         )
 
-    list_tool_count.short_description = "Tools"
+    list_tool_count.short_description = _("Tools")  # type: ignore
 
 
 @admin.register(Tool)

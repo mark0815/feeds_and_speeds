@@ -1,9 +1,7 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework import routers
-from .views import (
-    MaterialClassViewSet,
-    MaterialViewSet,
-)
+
+from .views import MaterialClassViewSet, MaterialViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
