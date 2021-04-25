@@ -1,3 +1,4 @@
+""" Tool table model """
 from django.db import models
 
 from milling.models.tool import Tool

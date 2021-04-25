@@ -1,4 +1,4 @@
-import typing as t
+""" Models module """
 from math import pi
 
 from django.db import models
@@ -53,7 +53,7 @@ class DrillRecipe(models.Model):
         verbose_name_plural = "Drill Recipies"
 
     @property
-    def cutting_params(self) -> t.Tuple[float, float]:
+    def cutting_params(self) -> tuple[float, float]:
         rpm = (self.drill_data.vc * 1000) / (pi * self.drill_data.drill.diameter)
         vf = self.drill_data.f * rpm
         if self.rpm_override and rpm > self.rpm_override:

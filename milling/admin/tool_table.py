@@ -1,3 +1,4 @@
+""" Tool table admin """
 from django.contrib import admin
 from django.http.response import HttpResponse
 from django.template import loader
@@ -18,11 +19,12 @@ class ToolTableEntryAdmin(admin.ModelAdmin):
         ]
         return my_urls + urls
 
-    def export_linuxcnc(self, request):
+    @staticmethod
+    def export_linuxcnc(_):
         response = HttpResponse(content_type="text/csv")
         response["Content-Disposition"] = 'attachment; filename="tool.tbl"'
 
-        t = loader.get_template("admin/export_linuxcnc.txt")
-        c = {"data": ToolTableEntry.objects.all()}
-        response.write(t.render(c))
+        tool_table_template = loader.get_template("admin/export_linuxcnc.txt")
+        tool_table_data = {"data": ToolTableEntry.objects.all().order_by("t")}
+        response.write(tool_table_template.render(tool_table_data))
         return response

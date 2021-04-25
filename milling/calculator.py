@@ -1,39 +1,43 @@
 """ Calculator module """
-import typing as t
 from math import asin, pi, sin
 
 
 def calculate_rpm_vf(
-    vc: float,
-    fz: float,
+    cutting_speed: float,
+    feed_per_tooth: float,
     tool_diameter: float,
     tool_flute_count: int,
     max_rpm: float = None,
     max_vf: float = None,
-) -> t.Tuple[float, float]:
-    rpm = (vc * 1000) / (pi * tool_diameter)
-    vf = rpm * fz * tool_flute_count
+) -> tuple[float, float]:
+    rpm = (cutting_speed * 1000) / (pi * tool_diameter)
+    vf = rpm * feed_per_tooth * tool_flute_count
 
     if max_rpm and rpm > max_rpm:
         rpm = max_rpm
-        vf = max_rpm * fz * tool_flute_count
+        vf = max_rpm * feed_per_tooth * tool_flute_count
 
     if max_vf and vf > max_vf:
-        rpm = max_vf / (fz * tool_flute_count)
+        rpm = max_vf / (feed_per_tooth * tool_flute_count)
         vf = max_vf
 
     return (rpm, vf)
 
 
 def avg_chip_thickness(
-    ae: float,
-    fz: float,
+    radial_depth_of_cut: float,
+    feed_per_tooth: float,
     tool_cutting_edge_angle: float,
     tool_diameter: float,
     phi: float,
 ) -> float:
     """ Average chip thickness hm """
-    return (114.7 * fz * sin(tool_cutting_edge_angle) * (ae / tool_diameter)) / phi
+    return (
+        114.7
+        * feed_per_tooth
+        * sin(tool_cutting_edge_angle)
+        * (radial_depth_of_cut / tool_diameter)
+    ) / phi
 
 
 def avg_cutting_force(kc_1_1: float, avg_chip_thickness: float, mc: float) -> float:
@@ -41,9 +45,11 @@ def avg_cutting_force(kc_1_1: float, avg_chip_thickness: float, mc: float) -> fl
     return kc_1_1 / avg_chip_thickness ** mc
 
 
-def chip_cross_section_per_tooth(avg_chip_thickness: float, ap: float) -> float:
+def chip_cross_section_per_tooth(
+    avg_chip_thickness: float, axial_depth_of_cut: float
+) -> float:
     """ Cutting cross section per tooth (A in mm^2) """
-    return ap * avg_chip_thickness
+    return axial_depth_of_cut * avg_chip_thickness
 
 
 def cutting_force_per_tooth(
@@ -53,12 +59,14 @@ def cutting_force_per_tooth(
     return avg_cutting_force * chip_cross_section_per_tooth
 
 
-def phi_by_selection(center_cut: bool, ae: float, tool_diameter: float) -> float:
-    """ Calculated phi by selection based on ae """
+def phi_by_selection(
+    center_cut: bool, radial_depth_of_cut: float, tool_diameter: float
+) -> float:
+    """ Calculated phi by selection based on radial_depth_of_cut """
     if center_cut:
-        return 2 * asin(ae / tool_diameter)
+        return 2 * asin(radial_depth_of_cut / tool_diameter)
     cutter_radius = tool_diameter / 2
-    return 90 + asin((ae - cutter_radius) / cutter_radius)
+    return 90 + asin((radial_depth_of_cut - cutter_radius) / cutter_radius)
 
 
 def flutes_engaged(tool_diameter: float, phi: float) -> float:
@@ -66,9 +74,11 @@ def flutes_engaged(tool_diameter: float, phi: float) -> float:
     return tool_diameter * (phi / 360)
 
 
-def zeit_span_volumen(ae: float, ap: float, vf: float) -> float:
+def zeit_span_volumen(
+    radial_depth_of_cut: float, axial_depth_of_cut: float, vf: float
+) -> float:
     """ Q in cm^3 / min """
-    return (ae * ap * vf) / 1000
+    return (radial_depth_of_cut * axial_depth_of_cut * vf) / 1000
 
 
 def p_mot(q: float, kc: float) -> float:
@@ -78,31 +88,37 @@ def p_mot(q: float, kc: float) -> float:
 
 
 def cutting_power(
-    vc: float,
+    cutting_speed: float,
     kc_1_1: float,
     mc: float,
     center_cut: bool,
-    ae: float,
-    ap: float,
+    radial_depth_of_cut: float,
+    axial_depth_of_cut: float,
     tool_diameter: float,
-    fz: float,
+    feed_per_tooth: float,
     tool_cutting_edge_angle: float,
 ) -> float:
-    phi = phi_by_selection(center_cut=center_cut, ae=ae, tool_diameter=tool_diameter)
+    phi = phi_by_selection(
+        center_cut=center_cut,
+        radial_depth_of_cut=radial_depth_of_cut,
+        tool_diameter=tool_diameter,
+    )
     avg_ct = avg_chip_thickness(
-        ae=ae,
-        fz=fz,
+        radial_depth_of_cut=radial_depth_of_cut,
+        feed_per_tooth=feed_per_tooth,
         tool_cutting_edge_angle=tool_cutting_edge_angle,
         tool_diameter=tool_diameter,
         phi=phi,
     )
     avg_cf = avg_cutting_force(kc_1_1=kc_1_1, avg_chip_thickness=avg_ct, mc=mc)
-    ccspt = chip_cross_section_per_tooth(avg_chip_thickness=avg_ct, ap=ap)
+    ccspt = chip_cross_section_per_tooth(
+        avg_chip_thickness=avg_ct, axial_depth_of_cut=axial_depth_of_cut
+    )
     cfpt = cutting_force_per_tooth(
         avg_cutting_force=avg_cf, chip_cross_section_per_tooth=ccspt
     )
     f_eng = flutes_engaged(tool_diameter=tool_diameter, phi=phi)
-    pm = (cfpt * f_eng * (vc / 60)) / 1000
+    pm = (cfpt * f_eng * (cutting_speed / 60)) / 1000
     return pm
 
 

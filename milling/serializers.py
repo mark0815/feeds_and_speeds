@@ -1,3 +1,4 @@
+""" Serializers module """
 from rest_framework import serializers
 
 from .models import CuttingData, Machine, Tool, Vendor

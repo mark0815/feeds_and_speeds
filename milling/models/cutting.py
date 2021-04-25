@@ -1,3 +1,4 @@
+""" Cutting data models """
 import typing as t
 
 from django.db import models
@@ -98,11 +99,11 @@ class CuttingRecipe(models.Model):
         )
 
     @property
-    def cutting_data_effective(self) -> t.Tuple[float, float]:
+    def cutting_data_effective(self) -> tuple[float, float]:
         # calculate f&s based on tool
         return calculator.calculate_rpm_vf(
-            vc=self.vc_effective,
-            fz=self.fz_effective,
+            cutting_speed=self.vc_effective,
+            feed_per_tooth=self.fz_effective,
             tool_diameter=self.cutting_data.tool.diameter,
             tool_flute_count=self.cutting_data.tool.flute_count,
             max_rpm=self.max_rpm,

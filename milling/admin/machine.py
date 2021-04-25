@@ -1,3 +1,4 @@
+""" Machine admin """
 from django.contrib import admin
 
 from milling.models import Machine

@@ -1,3 +1,4 @@
+""" Models module """
 # flake8: noqa
 from .cutting import CuttingData, CuttingRecipe
 from .machine import Machine

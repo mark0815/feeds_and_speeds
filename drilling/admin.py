@@ -1,3 +1,4 @@
+""" Admin module """
 from django.contrib import admin
 
 from .models import Drill, DrillData, DrillRecipe
