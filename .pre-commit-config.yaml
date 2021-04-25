@@ -51,7 +51,7 @@ repos:
             "flake8-simplify",
           ]
   - repo: https://github.com/pycqa/pylint
-    rev: "pylint-2.8.0"
+    rev: "pylint-2.7.4"
     hooks:
       - id: pylint
         exclude: "[a-zA-Z]*/(migrations|tests)/(.)*"
